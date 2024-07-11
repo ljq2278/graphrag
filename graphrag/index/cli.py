@@ -267,7 +267,7 @@ def _read_config_parameters(root: str, config: str | None, reporter: ProgressRep
 
     if settings_yaml.exists():
         reporter.success(f"Reading settings from {settings_yaml}")
-        with settings_yaml.open("r") as file:
+        with settings_yaml.open("r", encoding="utf-8") as file:
             import yaml
 
             data = yaml.safe_load(file)
@@ -275,7 +275,7 @@ def _read_config_parameters(root: str, config: str | None, reporter: ProgressRep
 
     if settings_json.exists():
         reporter.success(f"Reading settings from {settings_json}")
-        with settings_json.open("r") as file:
+        with settings_json.open("r", encoding="utf-8") as file:
             import json
 
             data = json.loads(file.read())

@@ -32,7 +32,7 @@ reporter = PrintProgressReporter("")
 
 
 def __get_embedding_description_store(
-    vector_store_type: str = VectorStoreType.LanceDB, config_args: dict | None = None
+        vector_store_type: str = VectorStoreType.LanceDB, config_args: dict | None = None
 ):
     """Get the embedding description store."""
     if not config_args:
@@ -54,11 +54,11 @@ def __get_embedding_description_store(
 
 
 def run_global_search(
-    data_dir: str | None,
-    root_dir: str | None,
-    community_level: int,
-    response_type: str,
-    query: str,
+        data_dir: str | None,
+        root_dir: str | None,
+        community_level: int,
+        response_type: str,
+        query: str,
 ):
     """Run a global search with the given query."""
     data_dir, root_dir, config = _configure_paths_and_settings(data_dir, root_dir)
@@ -92,11 +92,11 @@ def run_global_search(
 
 
 def run_local_search(
-    data_dir: str | None,
-    root_dir: str | None,
-    community_level: int,
-    response_type: str,
-    query: str,
+        data_dir: str | None,
+        root_dir: str | None,
+        community_level: int,
+        response_type: str,
+        query: str,
 ):
     """Run a local search with the given query."""
     data_dir, root_dir, config = _configure_paths_and_settings(data_dir, root_dir)
@@ -157,7 +157,7 @@ def run_local_search(
 
 
 def _configure_paths_and_settings(
-    data_dir: str | None, root_dir: str | None
+        data_dir: str | None, root_dir: str | None
 ) -> tuple[str, str | None, GraphRagConfig]:
     if data_dir is None and root_dir is None:
         msg = "Either data_dir or root_dir must be provided."
@@ -194,7 +194,7 @@ def _read_config_parameters(root: str):
 
     if settings_yaml.exists():
         reporter.info(f"Reading settings from {settings_yaml}")
-        with settings_yaml.open("r") as file:
+        with settings_yaml.open("r", encoding="utf-8") as file:
             import yaml
 
             data = yaml.safe_load(file)
@@ -202,7 +202,7 @@ def _read_config_parameters(root: str):
 
     if settings_json.exists():
         reporter.info(f"Reading settings from {settings_json}")
-        with settings_json.open("r") as file:
+        with settings_json.open("r", encoding="utf-8") as file:
             import json
 
             data = json.loads(file.read())

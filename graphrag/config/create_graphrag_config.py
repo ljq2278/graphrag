@@ -461,7 +461,8 @@ def create_graphrag_config(
 
         with reader.use(values.get("cluster_graph")):
             cluster_graph_model = ClusterGraphConfig(
-                max_cluster_size=reader.int("max_cluster_size") or defs.MAX_CLUSTER_SIZE
+                max_cluster_size=reader.int("max_cluster_size") or defs.MAX_CLUSTER_SIZE,
+                strategy=reader.str("strategy") or None
             )
 
         with (
